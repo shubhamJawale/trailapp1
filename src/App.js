@@ -13,30 +13,33 @@ import { upstate, useState } from "react";
 
 function App() {
   let [count, setCount] = useState(0);
-
+  let [icon, seticon] = useState("(¬‿¬)")
   let incr = () => {
     console.log(count);
     count += 1;
     setCount(count);
+    seticon("(*-*)");
+
+
   }
 
 
   let rset = () => {
     count = 0;
     setCount(count);
+    seticon("(¬‿¬)");
   }
 
   return (
 
 
-    <div>
-      < h1 > trail app</h1 >
-      <button onClick={incr}>  press me</button>
-      <button onClick={rset}> reset</button>
-      <h1> (¬‿¬) {count}</h1>
+    <div className="container-lg px-lg  border border-danger p-100 m-100 mt-5 ">
+      < h1 > Trail App</h1 >
+      <button onClick={incr} className="btn btn-outline-primary rounded m-2">  press me</button>
+      <button onClick={rset} className="btn btn-outline-danger rounded m-2"> reset</button>
+      <h1 className="text-success"> {icon} {count}</h1>
 
     </div>
   )
 }
-
 export default App;
