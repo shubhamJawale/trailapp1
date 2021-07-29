@@ -1,45 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 import { upstate, useState } from "react";
-
-// this program demonstrates a staless vrables even though syntactally iit is correct but the c0ounter is limited with scope and its value can not be updated
-
-
-
-
-
-
-
+import { BrowserRouter, Route, Link } from "react-router-dom";
+//npm install react-router-dom
+import { Page1, Page2, Page3, Page4 ,Page5 } from "./pages.js";
 
 function App() {
-  let [count, setCount] = useState(0);
-  let [icon, seticon] = useState("(¬‿¬)")
-  let incr = () => {
-    console.log(count);
-    count += 1;
-    setCount(count);
-    seticon("(*-*)");
-
-
-  }
-
-
-  let rset = () => {
-    count = 0;
-    setCount(count);
-    seticon("(¬‿¬)");
-  }
-
   return (
-
-
-    <div className="container-lg px-lg  border border-danger p-100 m-100 mt-5 ">
-      < h1 > Trail App</h1 >
-      <button onClick={incr} className="btn btn-outline-primary rounded m-2">  press me</button>
-      <button onClick={rset} className="btn btn-outline-danger rounded m-2"> reset</button>
-      <h1 className="text-success"> {icon} {count}</h1>
-
+    <div>
+      
+      
+      <BrowserRouter>
+      <NavMenu />
+       
+        <Route exact={true} path="/page1" component={Page1} />
+        <Route exact={true} path="/page2" component={Page2} />
+        <Route exact={true} path="/page3" component={Page3} />
+        <Route exact={true} path="/page4" component={Page4} />
+        <Route exact={true}  path="/page5" component={Page5}  />
+        <Route exact={true} path="/" component={Page1} />
+      </BrowserRouter>
+      
     </div>
-  )
+  );
 }
+
+//component
+// name of component should be in pascal case always
+function NavMenu() {
+  return (
+    <div className="navbar navbar-expand-lg navbar-dark bg-dark text-light">
+      <Link to="/page1" className="text-light p-5"> page1 </Link>
+      <Link to="/page2" className="text-light p-5"> page2 </Link>
+      <Link to="/page3" className="text-light p-5"> page3 </Link>
+      <Link to="/page4" className="text-light p-5"> page4 </Link>
+      <Link to="/page5" className="text-light p-5" > page5 </Link>
+    </div>
+  );
+}
+
 export default App;
