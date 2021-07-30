@@ -28,12 +28,12 @@ function App() {
 // name of component should be in pascal case always
 function NavMenu() {
   return (
-    <div className="navbar navbar-expand-lg navbar-dark bg-dark text-light">
-      <Link to="/page1" className="text-light p-5"> page1 </Link>
-      <Link to="/page2" className="text-light p-5"> page2 </Link>
-      <Link to="/page3" className="text-light p-5"> page3 </Link>
-      <Link to="/page4" className="text-light p-5"> page4 </Link>
-      <Link to="/page5" className="text-light p-5" > page5 </Link>
+    <div className="navbar navbar-expand-lg navbar-dark bg-dark text-light d-flex justify-content-center">
+      <Link to="/page1" className="text-light px-5 font-weight-bold text-decoration-none"> page1 </Link>
+      <Link to="/page2" className="text-light px-5 font-weight-bold text-decoration-none"> page2 </Link>
+      <Link to="/page3" className="text-light px-5 font-weight-bold text-decoration-none"> page3 </Link>
+      <Link to="/page4" className="text-light px-5 font-weight-bold text-decoration-none"> page4 </Link>
+      <Link to="/page5" className="text-light py-3 px-5 font-weight-normal text-decoration-none" > page5 </Link>
     </div>
   );
 }
