@@ -32,11 +32,12 @@ let clk= () =>{
   }
 
  
-
+/* value should be written as varibale wich we are setting in above functions cause it will help us in clearing and managing data wirtten fuylly*/
   return (
     <div className="mx-5">
       <div className="border border-danger p-5 mt-5">
       <Heading/>
+      
       <input type="text" name="" id="" className="form-control" value={textinp} onChange={chnge} placeholder="Enter Task !  !   !   !  !"/>  
       <button className="btn btn-outline-danger mt-3 px-5" onClick={clk}>Add Note</button> 
       <button className="btn btn-outline-warning mx-3 mt-3 px-5" onClick={rstclr}>Clear List</button> 
