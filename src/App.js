@@ -1,60 +1,117 @@
+
 import "./App.css";
-import { upstate, useState } from "react";
-//import { BrowserRouter, Route, Link } from "react-router-dom";
-//npm install react-router-dom
-//import { Page1, Page2, Page3, Page4 ,Page5 } from "./pages.js";
-
-
+import { useState } from "react";
 
 export default function App() {
-  let [todolist, setlist]  = useState([]);
-let [textinp, setinp] =useState("");
-
-let clk= () =>{
-  let listchng = [textinp ,...todolist];
-  setlist(listchng);
-  let str = "";
-  setinp(str);
-
-}
-
-  let chnge =(e) =>{
-    let textinp1 = e.target.value;
-   
-    console.log(textinp1); 
-    setinp(textinp1);
-    
-  }
-
-  let rstclr =() =>
-  {
-    setlist([]);
-  }
-
- 
-/* value should be written as varibale wich we are setting in above functions cause it will help us in clearing and managing data wirtten fuylly*/
   return (
-    <div className="mx-5">
-      <div className="border border-danger p-5 mt-5">
-      <Heading/>
-      
-      <input type="text" name="" id="" className="form-control" value={textinp} onChange={chnge} placeholder="Enter Task !  !   !   !  !"/>  
-      <button className="btn btn-outline-danger mt-3 px-5" onClick={clk}>Add Note</button> 
-      <button className="btn btn-outline-warning mx-3 mt-3 px-5" onClick={rstclr}>Clear List</button> 
-        </div>  
-        <div className="border border-success p-5 mt-5">
-          <h1 className="alert alert-warning px-5"> TASKS </h1>
-         {todolist.map((item)=>{return <h1 className="alert alert-success mt-2">{item}</h1>})}
-        </div>
-      
+    <div>
+      <MyRegisterComponent />
     </div>
   );
 }
 
+function MyRegisterComponent() {
+  let [userList, setUserList] = useState([
+    { id: 1, name: "rahul", email: "rahul@gmail.com", mobile: "212121" },
+    { id: 2, name: "sachin", email: "sachin@gmail.com", mobile: "212121" },
+  ]);
 
-// component
-function Heading() 
-{
-  return (<div className="bg-danger px-5 text-light " > <h1> TO DO LIST</h1> </div>)
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const usernameChangeHandler = (e) => setUsername(e.target.value);
+  const passwordChangeHandler = (e) => setPassword(e.target.value);
+
+  const addNewUser = () => {
+    const newuser = {
+      id: userList.length + 1,
+      name: username,
+      password: password,
+      email: "sample@gmail.com",
+      mobile: "1212",
+    };
+
+    const newUserList = [newuser, ...userList];
+    setUserList(newUserList);
+  };
+
+  return (
+    <div>
+      <h1 className="bg-dark text-light p-3 ">User Registeation </h1>
+
+      {/** FORM COMPONENT */}
+      <form className="m-2">
+        <div>
+          <input
+            type="text"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter username"
+            value={username}
+            onChange={usernameChangeHandler}
+          />
+        </div>
+
+        <div>
+          <input
+            type="password"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter Passwword"
+            value={password}
+            onChange={passwordChangeHandler}
+          />
+        </div>
+
+        <div>
+          <input
+            type="email"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter Email"
+          />
+        </div>
+
+        <div>
+          <input
+            type="mobile"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter Mobile"
+          />
+        </div>
+
+        <div>
+          <input
+            type="button"
+            value="Register"
+            onClick={addNewUser}
+            className="btn btn-lg btn-secondary w-100"
+          />
+        </div>
+      </form>
+
+      {/** List BOX HERE */}
+      <table className="table table-dark table-striped m-2">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">PASSWORD</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">MOBILE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userList.map((item) => {
+            return (
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.password}</td>
+                <td>{item.email}</td>
+                <td>{item.mobile}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }
-//export default App;
