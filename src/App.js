@@ -1,14 +1,14 @@
 
 import "./App.css";
 import { useState } from "react";
-import Form from "./form.js"
-import RegisterForm from "./form1";
+// import Form from "./form.js"
+// import RegisterForm from "./form1";
 import axios from "axios";
 import { useEffect } from "react";
-import { start } from "@popperjs/core";
+// import { start } from "@popperjs/core";
 
 export default function App() {
-  const [list, setlist] = useState([]);
+  const [list, setlist] = useState([{}]);
 
 
 
@@ -17,7 +17,9 @@ export default function App() {
     axios.get("http://localhost:9096/gp").then(
       (response) => {
         console.log(response);
-        setlist(...list, response.data);
+        let data = Array.from(response.data);
+
+        setlist(...list, data);
         //console.log(list);
       },
       (error) => {
@@ -39,8 +41,12 @@ export default function App() {
 
         list.map((item) => {
 
-          return `<h1 key={prodId}>${item.prodId}</td>`;
-
+          return <div>
+            <h1 key={item.prodId}>{item.prodId}</h1>;
+            <h1>{item.productName}</h1>;
+            <h1>{item.productCategory}</h1>;
+            <h1>{item.price} </h1>
+          </div>
         }
 
         )
