@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 // import { start } from "@popperjs/core";
+import { Cardb } from "./cadrfile";
 
 export default function App() {
   const [list, setlist] = useState([{}]);
@@ -34,22 +35,19 @@ export default function App() {
     test();
   });
 
+  let [list1, setlist1] = useState([])
+
+  let i1 = 0;
+  list1 = ['hello', 'shubham', 'jawale'];
   return (
     <div>
       {
+        list1.map((item) => {
+          return (<div>
+            {item}
 
-
-        list.map((item) => {
-
-          return <div>
-            <h1 key={item.prodId}>{item.prodId}</h1>;
-            <h1>{item.productName}</h1>;
-            <h1>{item.productCategory}</h1>;
-            <h1>{item.price} </h1>
-          </div>
-        }
-
-        )
+          </div>);
+        })
 
       }
     </div>
