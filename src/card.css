@@ -1,0 +1,15 @@
+.maincontainer
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left:15%;
+    margin-top: 2%;
+    flex-grow: 20px;
+    
+}
+
+
+*{
+    
+    
+}
